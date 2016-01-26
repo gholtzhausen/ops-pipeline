@@ -9,6 +9,11 @@ addons:
       - chefdk
 
 env:
+  matrix:
+  - INSTANCE=mysql-centos-7
+  - INSTANCE=mysql-ubuntu-1404
+  - INSTANCE=headless-centos-7
+  - INSTANCE=headless-ubuntu-1404
   fast_finish: true
 
 before_script:
@@ -21,9 +26,9 @@ script:
   - /opt/chefdk/embedded/bin/foodcritic --version
   - /opt/chefdk/embedded/bin/foodcritic provision/chef/cookbooks/
 #  - kitchen test
-#  - KITCHEN_LOCAL_YAML=.kitchen.system.yml kitchen verify ${INSTANCE}
+  - KITCHEN_LOCAL_YAML=.kitchen.docker.yml kitchen verify ${INSTANCE}
 
 after_script:
-  # - docker images
-  # - docker ps -a
+  - docker images
+  - docker ps -a
   - cat .kitchen/logs/kitchen.log
