@@ -1,6 +1,11 @@
 ---
 rvm: 2.2
 
+sudo: required
+
+services:
+  - docker
+
 addons:
   apt:
     sources:
