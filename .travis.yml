@@ -1,5 +1,5 @@
 ---
-rvm: 2.2.3
+rvm: 2.2
 
 sudo: required
 
@@ -16,6 +16,10 @@ env:
   fast_finish: true
 
 before_script:
+  - sudo apt-get update -q
+  - sudo apt-get install virtualbox --fix-missing
+  - wget -nv https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
+  - dpkg -i vagrant_1.8.1_x86_64.deb
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
   - vagrant plugin install vagrant-berkshelf
 
