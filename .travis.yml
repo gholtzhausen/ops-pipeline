@@ -1,5 +1,5 @@
 ---
-rvm: 2.2
+rvm: 2.2.3
 
 sudo: required
 
@@ -9,30 +9,27 @@ addons:
       - chef-current-precise
     packages:
       - chefdk
-
-install: echo "skip bundle install"
-
-services: docker
+      - vagrant
+      - virtualbox
 
 env:
   fast_finish: true
 
 before_script:
-  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
-  - /opt/chefdk/embedded/bin/chef gem install kitchen-dokken
+  - vagrant plugin install vagrant-berkshelf
 
 script:
   - /opt/chefdk/embedded/bin/chef --version
-  # - /opt/chefdk/embedded/bin/rubocop --version
+  - /opt/chefdk/embedded/bin/rubocop --version
   # - /opt/chefdk/embedded/bin/rubocop
-  # - /opt/chefdk/embedded/bin/foodcritic --version
+  - /opt/chefdk/embedded/bin/foodcritic --version
   # - /opt/chefdk/embedded/bin/foodcritic . --exclude spec
   # - /opt/chefdk/embedded/bin/rspec
   - kitchen test
 #  - KITCHEN_LOCAL_YAML=.kitchen.system.yml kitchen verify ${INSTANCE}
 
 after_script:
-  - docker images
-  - docker ps -a
+  # - docker images
+  # - docker ps -a
   - cat .kitchen/logs/kitchen.log
