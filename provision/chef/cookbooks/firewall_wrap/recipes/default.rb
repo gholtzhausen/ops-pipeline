@@ -1,7 +1,7 @@
-include_recipe 'firewall'
-
-# open nfs ports in firewall, unless in a docker container
+# open ports in firewall, unless in a docker container
 unless ::File.exist?('/.dockerinit')
+  include_recipe 'firewall'
+
   node['firewall_wrap']['tcp_ports'].each do |p|
     firewall_rule "firewall_wrap_open_#{p}_tcp" do
       protocol :tcp

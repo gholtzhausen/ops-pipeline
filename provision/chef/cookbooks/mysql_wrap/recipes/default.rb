@@ -1,3 +1,9 @@
+# installing the mysql package starts the service up
+# prevent that
+service 'mysql' do
+  action [:stop, :disable]
+end
+
 if node['mysql_wrap']['create']
   mysql_service 'mysqld' do
     port node['mysql_wrap']['port']

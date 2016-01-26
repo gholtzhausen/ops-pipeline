@@ -1,8 +1,8 @@
-include_recipe 'firewall'
-
 # open nfs ports in firewall unless running
 # in a docker container
 unless ::File.exist?('/.dockerinit')
+  include_recipe 'firewall'
+
   %w(udp tcp).each do |p|
     firewall_rule "nfs_sunrpc_#{p}" do
       protocol p.to_sym
