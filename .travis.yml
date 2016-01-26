@@ -9,8 +9,6 @@ addons:
       - chef-current-precise
     packages:
       - chefdk
-      - vagrant
-      - virtualbox
 
 env:
   fast_finish: true
