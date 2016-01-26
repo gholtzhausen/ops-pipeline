@@ -1,8 +1,8 @@
 ---
 driver:
   name: vagrant
-#  provider: vmware_fusion
-  provider: virtualbox
+  provider: vmware_fusion
+#  provider: virtualbox
   gui: false
   customize:
     memory: 1024

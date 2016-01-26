@@ -14,17 +14,12 @@ env:
   fast_finish: true
 
 before_script:
-  - sudo apt-get update -q
-  - sudo apt-get install virtualbox --fix-missing
-  - wget -nv https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
-  - dpkg -i vagrant_1.8.1_x86_64.deb
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
-  - vagrant plugin install vagrant-berkshelf
 
 script:
   - /opt/chefdk/embedded/bin/chef --version
   - /opt/chefdk/embedded/bin/rubocop --version
-  # - /opt/chefdk/embedded/bin/rubocop
+  - /opt/chefdk/embedded/bin/rubocop
   - /opt/chefdk/embedded/bin/foodcritic --version
   # - /opt/chefdk/embedded/bin/foodcritic . --exclude spec
   # - /opt/chefdk/embedded/bin/rspec
