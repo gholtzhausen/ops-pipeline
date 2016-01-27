@@ -16,6 +16,7 @@ platforms:
   - name: centos-7
     driver_config:
       image: 2k0ri/centos7-systemd
+      run_command: /usr/sbin/init
   - name: ubuntu-14.04
     driver_config:
       image: ubuntu-upstart:14.04
