@@ -38,7 +38,6 @@ script:
   - /opt/chefdk/embedded/bin/foodcritic --version
   - /opt/chefdk/embedded/bin/foodcritic provision/chef/cookbooks/
   - KITCHEN_LOCAL_YAML=.kitchen.docker.yml kitchen verify -l debug ${INSTANCE}
-  - find / | grep java_install
 
 
 after_script:

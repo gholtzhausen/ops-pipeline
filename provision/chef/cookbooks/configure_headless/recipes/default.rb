@@ -36,6 +36,7 @@ when 'ubuntu', 'debian'
     append true
     members 'vagrant'
     notifies :restart, 'service[docker]'
+    only_if "type docker"
   end
 
   group 'vboxsf' do
@@ -43,6 +44,7 @@ when 'ubuntu', 'debian'
     append true
     members 'vagrant'
     notifies :restart, 'service[docker]'
+    only_if "type docker"
   end
 
   service 'docker' do
