@@ -53,7 +53,7 @@ suites:
       - centos-7
       - ubuntu-14.04
     run_list:
-      - role[opspipeline-headless]
+      - role[docker-opspipeline-headless]
 
   - name: desktop
     includes:

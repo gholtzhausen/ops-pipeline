@@ -1,4 +1,8 @@
 
+node['java_install']['packages'].each do |name|
+  package name
+end
+
 if node['java_install']['java7']
   java_ark 'java_install_7' do
     default node['java_install']['default'] == 7
