@@ -8,7 +8,6 @@
       "compiletime": true,
       "periodic_update_min_delay": 300
     },
-    "tz": "US/Eastern",
     "users": [
       "vagrant"
     ],
@@ -51,7 +50,6 @@
     "recipe[maven]",
     "recipe[nodejs]",
     "recipe[gradle]",
-    "recipe[timezone_lwrp]",
     "recipe[configure_headless]"
   ]
 }
