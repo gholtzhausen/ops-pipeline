@@ -35,7 +35,7 @@ elif which yum; then
 	sudo yum update -y
 	sudo yum update -y kernel
 	sudo yum install -y wget curl virt-what net-tools git yum-utils
-	if [ ! -f /.dockerinit ]; then
+	if [ ! -f /.dockerinit  -a ! -f /.dockerenv ]; then
 		sudo reboot
 	fi
 elif which apt-get; then
@@ -46,7 +46,7 @@ elif which apt-get; then
 	sudo apt-get -y autoremove
 	sudo apt-get clean
 	sudo apt-get autoclean
-	if [ ! -f /.dockerinit ]; then
+	if [ ! -f /.dockerinit  -a ! -f /.dockerenv ]; then
 		sudo reboot
 	fi
 fi

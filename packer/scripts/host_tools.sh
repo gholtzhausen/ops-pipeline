@@ -24,7 +24,7 @@ set -e
 
 cd ~
 
-if [ -f /.dockerinit ]; then
+if [ ! -f /.dockerinit  -a ! -f /.dockerenv ]; then
 	# no host tools needed for docker
 	exit 0
 
